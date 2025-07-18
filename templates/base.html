@@ -6,11 +6,173 @@
     <title>{% block title %}Job Applicant Dashboard{% endblock %}</title>
     {% load static %}
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #2C3E50;
+            --primary-accent: #3498DB;
+            --background-light: #F8F9FA;
+            --text-dark: #34495E;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            background-color: var(--primary-dark) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #fff; /* Ensure brand text is white */
+        }
+
+        .container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Stronger, softer shadow */
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            background-color: var(--primary-dark) !important; /* Use dark blue for header */
+            color: #fff;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .btn {
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-accent);
+            border-color: var(--primary-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980B9; /* Slightly darker accent on hover */
+            border-color: #2980B9;
+            transform: translateY(-2px); /* Lift effect */
+        }
+
+        .btn-danger {
+            background-color: #E74C3C;
+            border-color: #E74C3C;
+        }
+
+        .btn-danger:hover {
+            background-color: #C0392B;
+            border-color: #C0392B;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #95A5A6;
+            border-color: #95A5A6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7F8C8D;
+            border-color: #7F8C8D;
+            transform: translateY(-2px);
+        }
+
+        .table-responsive {
+            border-radius: 0.75rem;
+            overflow: hidden; /* Ensures rounded corners apply to table */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow for table */
+        }
+
+        .table {
+            margin-bottom: 0; /* Remove default table margin */
+        }
+
+        .table-dark thead th {
+            background-color: var(--primary-dark);
+            color: #fff;
+            border-bottom: none;
+            padding: 1rem 1.25rem;
+            font-weight: 500;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.03); /* Lighter stripe */
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.07); /* Clearer hover effect */
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .table td, .table th {
+            padding: 1rem 1.25rem;
+            vertical-align: middle;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+            padding: 0.5em 0.8em;
+            border-radius: 1rem; /* Pill-shaped badge */
+            font-weight: 600;
+        }
+
+        .badge.bg-info {
+            background-color: var(--primary-accent) !important;
+            color: #fff;
+        }
+
+        .alert {
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-size: 1.05rem;
+        }
+
+        .alert-info {
+            background-color: #D6ECF7; /* Lighter shade of primary-accent */
+            color: #236B9E; /* Darker text for contrast */
+        }
+
+        .alert-warning {
+            background-color: #FEF9E7;
+            color: #A06400;
+        }
+
+        h2, h4, h5, h6 {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        p, table {
+            line-height: 1.7;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'portfolio:list' %}">Job Dashboard</a>
+            <a class="navbar-brand" href="{% url 'portfolio:list' %}">
+                <span style="font-size: 1.5rem;">🚀</span> Job Dashboard
+            </a>
         </div>
     </nav>
 
@@ -19,7 +181,7 @@
             {% for message in messages %}
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% endfor %}
         {% endif %}
